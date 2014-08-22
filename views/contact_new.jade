@@ -1,0 +1,263 @@
+!!! 5
+html
+  head
+    link(type='text/css', rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript', src='/javascripts/validation.js')
+    title Contact manager
+  body
+    .entete
+      h1 Ajouter un contact
+      .rech
+        form(action='/contact/rech', method='GET')
+          input#mot(type='text', name='mot', value='', placeholder='Recherche...')
+          input#rech(type='submit', value='Rechercher')
+          p Recherche par nom, prénom et nom d'organisation
+    a(id='retour', href='/') << Retour a Liste des contacts  
+    #contacts
+      form(name='myForm', method='post',onsubmit='return validate()', action='/contact')
+        div
+          div
+            table(width='90%', border='0', align='center', cellpadding='0', cellspacing='0')
+              tr
+                td(width='50%')
+                  b
+                    label Nom
+                td(width='50%')
+                  b
+                    label Prénom
+              tr
+                td
+                  input#nom(type='text', name='nom', placeholder='Le nom...')
+                td
+                  input#prenom(type='text', name='prenom', placeholder='Le prénom...')
+              tr
+                td
+                  b
+                    label Nom d'organisation
+                td  
+              tr
+                td
+                  input#nom_organisation(type='text', name='nom_organisation', placeholder="le nom de l'organisation...")
+                td  
+              tr
+                td
+                  b
+                    label Titre
+                td
+                  b
+                    label Profession
+              tr
+                td
+                  input#titre(type='text', name='titre', placeholder='Le titre...')
+                td
+                  input#profession(type='text', name='profession', placeholder='La profession...')
+              tr
+                td
+                  b
+                    label Sexe
+                td
+                  b
+                    label Date de naissance :
+              tr
+                td
+                  select#sexe(name='sexe', tabindex='3', placeholder='Sexe')
+                    option(value='', selected)
+                    option(value='Masculin') Masculin
+                    option(value='Feminin') Feminin
+                td
+                  input#date_de_naissance(type='date', name='date_de_naissance', placeholder='la date de naissance...')
+              tr
+                td
+                  b Archivé 
+                td
+              tr
+                td
+                  select#archiver(name='archiver', tabindex='2', placeholder='')
+                    option(value='archive') Archivé
+                    option(value='noarchive', selected) Non-archivé
+                td
+              tr
+                td(colspan='2')  
+              tr
+                td(colspan='2')  
+              tr
+                td(colspan='2', bgcolor='#CCCCCC') Numéros de téléphones :
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        b Numéro 
+                      td
+                        label
+                          b Description
+                    tr
+                      td
+                        input#num1(type='tel', name='num1',pattern='\.([0-9]{3}\.) [0-9]{3}-[0-9]{4}', placeholder='(###) ###-####')
+                      td
+                        input#disc_num1(type='text', name='disc_num1', placeholder='Description...')
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#num2(type='tel', name='num2',pattern='\.([0-9]{3}\.) [0-9]{3}-[0-9]{4}', placeholder='(###) ###-####')
+                      td
+                        input#disc_num2(type='text', name='disc_num2', placeholder='Description...')
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#num3(type='tel', name='num3',pattern='\.([0-9]{3}\.) [0-9]{3}-[0-9]{4}', placeholder='(###) ###-####')
+                      td
+                        input#disc_num3(type='text', name='disc_num3', placeholder='Description...')
+              tr
+                td(colspan='2')  
+              tr
+                td(colspan='2', bgcolor='#CCCCCC') Adresses :
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        b Adresse
+                      td
+                        label
+                          b Description
+                    tr
+                      td
+                        input#adresse1(type='text', name='adresse1', placeholder='Une adresse...')
+                      td
+                        input#disc_adr1(type='text', name='disc_adr1', placeholder='Description...')
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#adresse2(type='text', name='adresse2', placeholder='Une adresse...')
+                      td
+                        input#disc_adr2(type='text', name='disc_adr2', placeholder='Description...')
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#adresse3(type='text', name='adresse3', placeholder='Une adresse...')
+                      td
+                        input#disc_adr3(type='text', name='disc_adr3', placeholder='Description...')
+              tr
+                td(colspan='2')  
+              tr
+                td(colspan='2', bgcolor='#CCCCCC') Courriels :
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        b Email
+                      td
+                        label
+                          b Description
+                    tr
+                      td
+                        input#email1(type='email', name='email1', placeholder='example@exemple.com')
+                      td
+                        input#disc_email1(type='text', name='disc_email1', placeholder='Description...')
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#email2(type='email', name='email2', placeholder='example@exemple.com')
+                      td
+                        input#disc_email2(type='text', name='disc_email2', placeholder='Description...')
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#email3(type='email', name='email3', placeholder='example@exemple.com')
+                      td
+                        input#disc_email3(type='text', name='disc_email3', placeholder='Description...')
+              tr
+                td(colspan='2')  
+              tr
+                td(colspan='2', bgcolor='#CCCCCC') Sites web :
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        b Site web
+                      td
+                        label
+                          b Description
+                    tr
+                      td
+                        input#site1(type='url', name='site1', placeholder='http://www.exemple.com')
+                      td
+                        input#disc_site1(type='text', name='disc_site1', placeholder='Description...')
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#site2(type='url', name='site2', placeholder='http://www.exemple.com')
+                      td
+                        input#disc_site2(type='text', name='disc_site2', placeholder='Description...')
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#site3(type='url', name='site3', placeholder='http://www.exemple.com')
+                      td
+                        input#disc_site3(type='text', name='disc_site3', placeholder='Description...')
+              tr
+                td(colspan='2')  
+              tr
+                td(colspan='2', bgcolor='#CCCCCC') Dates importantes :
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        b Date
+                      td
+                        label
+                          b Description
+                    tr
+                      td
+                        input#date1(type='date', name='date1')
+                      td
+                        input#disc_date1(type='text', name='disc_date1', placeholder='Description...')
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#date2(type='date', name='date2')
+                      td
+                        input#disc_date2(type='text', name='disc_date2', placeholder='Description...')
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#date3(type='date', name='date3')
+                      td
+                        input#disc_date3(type='text', name='disc_date3', placeholder='Description...')
+              tr
+                td(colspan='2')  
+              tr
+                td
+                  b Notes
+                td
+              tr
+                td(colspan='2')
+                  label(for='notes')
+                  textarea#notes(name='notes', cols='100%', rows='5', placeholder='Notes...')
+                  #validateMsg        
+          #editcontactSubmit
+            input#save(type='submit', value='Enregistrer')

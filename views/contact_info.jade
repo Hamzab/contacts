@@ -1,0 +1,263 @@
+!!! 5
+html
+  head
+    link(type='text/css', rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript', src='/javascripts/validation.js')
+    title Contact manager
+  body(onload='getContact();')
+    div.entete
+      h1 Informations du contact
+      div.rech
+        form(action='/contact/rech', method='GET')
+          input#mot(type='text', name='mot', value='', placeholder='Recherche...')
+          input#rech(type='submit', value='Rechercher')
+          P Recherche par nom, prénom et nom d'organisation
+    a(id='retour', href='/') << Retour a Liste des contacts   
+    #contacts
+      form#myForm(name='myForm', method="post",onsubmit="return  validate()", action="/contact/")
+        input(name="_method", type="hidden", value="put") 
+        div
+          div
+            table(width='90%', border='0', align='center', cellpadding='0', cellspacing='0')
+              tr
+                td(width='50%')
+                  b
+                    label Nom
+                td(width='50%')
+                  b
+                    label Prénom
+              tr
+                td
+                  input#nom(type='text', name='nom', value="", disabled)
+                td
+                  input#prenom(type='text', name='prenom', value="", disabled)
+              tr
+                td
+                  b
+                    label Nom d'organisation
+                td  
+              tr
+                td
+                  input#nom_organisation(type='text', name='nom_organisation', value="", disabled)
+                td  
+              tr
+                td
+                  b
+                    label Titre
+                td
+                  b
+                    label Profession
+              tr
+                td
+                  input#titre(type='text', name='titre', value="", disabled)
+                td
+                  input#profession(type='text', name='profession', value="", disabled)
+              tr
+                td
+                  b
+                    label Sexe
+                td
+                  b
+                    label Date de naissance :
+              tr
+                td
+                  select#sexe(name='sexe', tabindex='3', disabled)
+                      option(value='', selected='selected') 
+                      option(value='Masculin') Masculin
+                      option(value='Feminin') Feminin          
+                td
+                  input#date_de_naissance(type='date', name='date_de_naissance', value="", disabled)
+              tr
+                td 
+                  b Archivé 				
+                td
+              tr
+                td 
+                  select#archiver(name='archiver', tabindex='2', placeholder='', disabled)
+                    option(value='archive') Archivé
+                    option(value='noarchive') Non-archivé
+                td
+              tr
+                td(colspan='2')  
+              tr
+                td(colspan='2')  
+              tr
+                td(colspan='2', bgcolor='#CCCCCC') Numéros de téléphones :
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        b Numéro 
+                      td
+                        label
+                          b Description
+                    tr
+                      td
+                        input#num1(type='tel',name='num1', value="",pattern='\.([0-9]{3}\.) [0-9]{3}-[0-9]{4}', placeholder='(###) ###-####', disabled)
+                      td
+                        input#disc_num1(type='text', name='disc_num1', value="", disabled)
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#num2(type='tel',name='num2', value="",pattern='\.([0-9]{3}\.) [0-9]{3}-[0-9]{4}', placeholder='(###) ###-####', disabled)
+                      td
+                        input#disc_num2(type='text', name='disc_num2', value="", disabled)
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#num3(type='tel',name='num3', value="",pattern='\.([0-9]{3}\.) [0-9]{3}-[0-9]{4}', placeholder='(###) ###-####', disabled)
+                      td
+                        input#disc_num3(type='text', name='disc_num3', value="", disabled)
+              tr
+                td(colspan='2')  
+              tr
+                td(colspan='2', bgcolor='#CCCCCC') Adresses :
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        b Adresse
+                      td
+                        label
+                          b Description
+                    tr
+                      td
+                        input#adresse1(name='adresse1', value="", disabled)
+                      td
+                        input#disc_adr1(type='text', name='disc_adr1', value="", disabled)
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#adresse2(name='adresse2', value="", disabled)
+                      td
+                        input#disc_adr2(type='text', name='disc_adr2', value="", disabled)
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#adresse3(name='adresse3', value="", disabled)
+                      td
+                        input#disc_adr3(type='text', name='disc_adr3', value="", disabled)
+              tr
+                td(colspan='2')  
+              tr
+                td(colspan='2', bgcolor='#CCCCCC') Courriels :
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        b Email
+                      td
+                        label
+                          b Description
+                    tr
+                      td
+                        input#email1(type='email',name='email1', value="" , placeholder='example@exemple.com', disabled)
+                      td
+                        input#disc_email1(type='text', name='disc_email1', value="", disabled)
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#email2(type='email',name='email2', value="", placeholder='example@exemple.com', disabled)
+                      td
+                        input#disc_email2(type='text', name='disc_email2', value="", disabled)
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#email3(type='email',name='email3', value="", placeholder='example@exemple.com', disabled)
+                      td
+                        input#disc_email3(type='text', name='disc_email3', value="", disabled)
+              tr
+                td(colspan='2')  
+              tr
+                td(colspan='2', bgcolor='#CCCCCC') Sites web :
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        b Site web
+                      td
+                        label
+                          b Description
+                    tr
+                      td
+                        input#site1(type='url',name='site1', value="", placeholder='http://www.exemple.com', disabled)
+                      td
+                        input#disc_site1(type='text', name='disc_site1', value="", disabled)
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#site2(type='url',name='site2', value="",placeholder='http://www.exemple.com', disabled)
+                      td
+                        input#disc_site2(type='text', name='disc_site2', value="", disabled)
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#site3(type='url',name='site3', value="",placeholder='http://www.exemple.com', disabled)
+                      td
+                        input#disc_site3(type='text', name='disc_site3', value="", disabled)
+              tr
+                td(colspan='2')  
+              tr
+                td(colspan='2', bgcolor='#CCCCCC') Dates importantes :
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        b Date
+                      td
+                        label
+                          b Description
+                    tr
+                      td
+                        input#date1(type='date', name='date1', value="", disabled)
+                      td
+                        input#disc_date1(type='text', name='disc_date1', value="", disabled)
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#date2(type='date', name='date2', value="", disabled)
+                      td
+                        input#disc_date2(type='text', name='disc_date2', value="", disabled)
+              tr
+                td(colspan='2')
+                  table(width='100%', border='0', cellpadding='0', cellspacing='0')
+                    tr
+                      td
+                        input#date3(type='date', name='date3', value="", disabled)
+                      td
+                        input#disc_date3(type='text', name='disc_date3', value="", disabled)
+              tr
+                td(colspan='2')  
+              tr
+                td
+                  b Notes
+                td
+              tr
+                td(colspan='2')
+                  label(for='notes')
+                  textarea#notes(name='notes', cols='100%', rows='5', disabled)
+                  #validateMsg 
+          #editcontactSubmit        
